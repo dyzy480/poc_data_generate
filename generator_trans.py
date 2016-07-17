@@ -232,13 +232,14 @@ def getTransData(startDate,days,TRANS_NUM):
 	
 		today_time=begin + datetime.timedelta(x)
 		today=today_time.strftime("%Y-%m-%d")
+		toMonth=today_time.strftime("%Y-%m")
 		today_number=today_time.strftime("%Y%m%d")
 		#交易流水计数器
 		trans_no = 1
 		#每天最大的流水数量
 		transSerial = (x for x in range(10000001,99999999))
 		
-		with open( 'data/'+ today +'.csv' , 'w') as data:
+		with open( 'data/'+ toMonth +'.csv' , 'a') as data:
 			while trans_no<TRANS_NUM :
 				with open('data/card.csv','r') as cards:
 					for line in cards:
